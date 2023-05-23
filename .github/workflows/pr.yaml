@@ -59,7 +59,6 @@ jobs:
         run: npm install
 
       - name: Initialize deployment URL
-        id: deployment_url
         run: echo "PUBLIC_URL=${{vars.PUBLIC_URL}}/${{github.head_ref}}" >> $GITHUB_ENV
 
       - name: Run build
