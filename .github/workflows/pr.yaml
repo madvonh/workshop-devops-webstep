@@ -8,7 +8,6 @@ jobs:
     steps: 
       - name: Checkout repository
         uses: actions/checkout@v3
-      - run: echo Hello World
 
       - name: Setup node
         uses: actions/setup-node@v3
@@ -20,12 +19,12 @@ jobs:
 
       - name: Run unit tests
         run: npm run test 
+
   E2ETests:
     runs-on: ubuntu-22.04
     steps: 
       - name: Checkout repository
         uses: actions/checkout@v3
-      - run: echo Hello World
 
       - name: Initialize node node
         uses: actions/setup-node@v3
@@ -37,3 +36,21 @@ jobs:
 
       - name: Run unit tests
         run: npm run e2e:run 
+
+  Build:
+    runs-on: ubuntu-22.04
+    needs: [UnitsTests, E2ETests]
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Initialize node node
+        uses: actions/setup-node@v3
+        with: 
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run unit tests
+        run: npm run build
