@@ -1,0 +1,10 @@
+name: PR Deployment
+on: 
+  push
+
+jobs:
+    UnitsTests:
+     runs-on: ubuntu-22.04
+     steps: 
+       - run: echo Hello World
+       
