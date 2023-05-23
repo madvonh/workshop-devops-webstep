@@ -61,11 +61,11 @@ jobs:
       - name: Initialize deployment URL
         run: echo "PUBLIC_URL=${{vars.PUBLIC_URL}}/${{github.head_ref}}" >> $GITHUB_ENV
 
-      - name: Run unit tests
+      - name: Run build
         run: npm run build
 
       - uses: JamesIves/github-pages-deploy-action@v4.4.1
         with: 
-          folder: .build
+          folder: ./build
           target-folder: ${{github.head_ref}}
           clean: false
