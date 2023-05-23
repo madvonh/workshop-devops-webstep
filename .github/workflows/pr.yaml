@@ -1,5 +1,16 @@
 name: PR Deployment
 on: 
+  workflow_dispatch:
+    inputs:
+      versionTypes:
+        type: choice
+        description: "Server"
+        default: "patch"
+        required: true
+        options:
+          - patch
+          - minor
+          - major
   pull_request:
   push:
     branches:
