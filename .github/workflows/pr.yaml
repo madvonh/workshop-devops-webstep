@@ -26,7 +26,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Initialize node node
+      - name: Initialize node
         uses: actions/setup-node@v3
         with: 
           node-version: 18
@@ -44,13 +44,13 @@ jobs:
       contents: write
       id-token: write
     environment: 
-      name: staging
+      name: "github-pages"
       url: ${{vars.PUBLIC_URL}}/
     steps: 
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Initialize node node
+      - name: Initialize node
         uses: actions/setup-node@v3
         with: 
           node-version: 18
@@ -66,6 +66,7 @@ jobs:
         run: npm run build
 
       - uses: JamesIves/github-pages-deploy-action@v4.4.1
+        id: deployment
         with: 
           folder: ./build
           target-folder: ${{github.head_ref}}
