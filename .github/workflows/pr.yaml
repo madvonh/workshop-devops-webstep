@@ -40,6 +40,10 @@ jobs:
       - name: Run unit tests
         run: npm run test 
 
+      - name: Upload snapshots on error
+        if: failure()
+        uses: actions/artifacts
+
   E2ETests:
     runs-on: ubuntu-22.04
     steps: 
@@ -89,3 +93,5 @@ jobs:
           folder: ./build
           target-folder: ${{github.head_ref}}
           clean: false
+
+          #act för att testa lokalt docker
