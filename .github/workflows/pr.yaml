@@ -44,7 +44,7 @@ jobs:
       contents: write
       id-token: write
     environment: 
-      name: "github-pages"
+      name: github-pages
       url: ${{vars.PUBLIC_URL}}/
     steps: 
       - name: Checkout repository
@@ -66,7 +66,6 @@ jobs:
         run: npm run build
 
       - uses: JamesIves/github-pages-deploy-action@v4.4.1
-        id: deployment
         with: 
           folder: ./build
           target-folder: ${{github.head_ref}}
